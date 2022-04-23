@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+message BaseRequest {
+  string api_key = 1;
+}
+
+
+message BaseResponse{
+  enum ErrorCodes {
+    NEED_CPU_INFO                = 0;
+  }
+
+  bool success                   = 1;
+  ErrorCodes error_code          = 2;
+  string error_message           = 3;
+}

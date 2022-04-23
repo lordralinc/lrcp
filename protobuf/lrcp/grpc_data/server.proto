@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+import "base.proto";
+
+message CreateServerRequest {
+  string access_token = 1;
+  string ip = 2;
+  uint32 port = 3;
+  string name = 4;
+}
+
+message CreateServerResponse {
+  string api_key = 1;
+}
+
+
+service ServerServicer {
+  rpc Ping(BaseRequest) returns (BaseResponse) {}
+  rpc CreateServer(CreateServerRequest) returns (CreateServerResponse) {}
+}
+
