@@ -31,6 +31,8 @@ check_result $? 'apt-get upgrade failed'
 
 apt-get install -y curl git wget build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget libbz2-dev
 apt-get install -y default-jre
+apt-get install -y nginx
+
 
 cd /tmp || (echo "Folder tmp not exists" && exit)
 wget https://www.python.org/ftp/python/3.10.0/Python-3.10.0.tar.xz
@@ -86,6 +88,8 @@ npm install
 cd ..
 
 pm2 start ecosystem.config.js --only lrcp_api
+
+sleep 15s
 
 cd web || (echo "Folder web not exists" && exit)
 rm -r src/api
