@@ -54,8 +54,8 @@ def create_db():
     db_sps = db_sp.add_subparsers()
 
     create_user_sp = db_sps.add_parser('create_user', help="Создать пользователя")
-    create_user_sp.add_argument('--password', type=str)
     create_user_sp.add_argument('--username', type=str)
+    create_user_sp.add_argument('--password', type=str)
     create_user_sp.add_argument('--name', type=str, default="")
     create_user_sp.add_argument('--email', type=str, default="")
     create_user_sp.set_defaults(func=create_user)
