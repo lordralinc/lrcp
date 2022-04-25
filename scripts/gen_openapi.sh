@@ -12,4 +12,3 @@ done
 
 rm openapitools.json
 
-git add --ignore-errors -A -- src/api

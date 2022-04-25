@@ -1,5 +1,7 @@
 import argparse
 
+from lrcp.scripts.setup_server import setup_server
+
 parser = argparse.ArgumentParser(
     usage='poetry run manage'
 )
@@ -34,6 +36,15 @@ def create_server():
 
     run_client_server_sp = client_sps.add_parser('run', help="Запустить сервер")
     run_client_server_sp.set_defaults(func=run_server)
+
+    setup_server_sp = client_sps.add_parser('setup', help="Установка сервера")
+    setup_server_sp.add_argument('--secret_key', type=str)
+    setup_server_sp.add_argument('--api_url', type=str)
+    setup_server_sp.add_argument('--access_token_expire_minutes', type=int, default=30)
+    setup_server_sp.add_argument('--master_ip', type=str)
+    setup_server_sp.add_argument('--master_port', type=int)
+    setup_server_sp.add_argument('--database_url', type=str, default='sqlite://db.sqlite3')
+    setup_server_sp.set_defaults(func=setup_server)
 
 
 def create_db():

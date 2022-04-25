@@ -23,8 +23,6 @@ def setup_client_server(args: argparse.Namespace):
         print(ex)
         cfg = Config()
 
-    print(cfg)
-
     args = Args.parse_obj(args.__dict__)
 
     cfg.client.host = args.client_ip

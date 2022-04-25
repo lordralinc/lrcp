@@ -1,7 +1,7 @@
 [general]
 debug=0
 database_url='sqlite://db.sqlite3'
-secret_key='20fef3846a96cb18ddcb7450e17454e6c98305dc13c46eeb8730d2a9bee842f3'
+secret_key=''
 
 [api]
 url='http://127.0.0.1:8000'
