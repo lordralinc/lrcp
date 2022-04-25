@@ -32,10 +32,10 @@ check_result $? 'apt-get upgrade failed'
 apt-get install -y curl git wget build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget libbz2-dev
 
 
-cd /tmp || echo "Folder tmp not exists" && exit
+cd /tmp || (echo "Folder tmp not exists" && exit)
 wget https://www.python.org/ftp/python/3.10.0/Python-3.10.0.tar.xz
 tar -xf Python-3.10.0.tar.xz
-cd Python-3.10.0 || echo "Folder Python-3.10.0 not exists" && exit
+cd Python-3.10.0 || (echo "Folder Python-3.10.0 not exists" && exit)
 ./configure --enable-optimizations
 make -j "$(proc)"
 make altinstall
@@ -51,7 +51,7 @@ adduser --system --disabled-password --home /home/lradmin --shell /usr/sbin/nolo
 usermod -aG sudo lradmin
 
 
-cd /home/lradmin || echo "Folder /home/lradmin not exists" && exit
+cd /home/lradmin || (echo "Folder /home/lradmin not exists" && exit)
 
 
 echo download modulules
@@ -66,7 +66,7 @@ python3.10 -m pip install -U poetry
 npm install pm2 -g
 pm2 startup
 
-cd lrcp || echo "Folder lrcp not exists" && exit
+cd lrcp || (echo "Folder lrcp not exists" && exit)
 poetry install
 
 
@@ -76,7 +76,7 @@ read -p "Введите ip адресс gRPC: > " GRPC_IP
 read -p "Порт gRPC: > " GRPC_PORT
 poetry run manage server setup --secret_key "$(openssl rand -hex 32)" --database_url '/home/lradmin/lrcp/db.sqlite3' --api_url $API_URL --master_ip $GRPC_IP --master_port $GRPC_PORT
 
-cd web || echo "Folder web not exists" && exit
+cd web || (echo "Folder web not exists" && exit)
 npm install
 
 cd ..
