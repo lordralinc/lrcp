@@ -8,7 +8,7 @@ const extraData = {
 module.exports = {
   apps : [{
     name   : "LRCP API",
-    script : "poetry run uvicorn lrcp.api.app:app",
+    script : "poetry run uvicorn lrcp.api.app:app --host 0.0.0.0 --port 8000",
     exec_mode: "fork",
     error_file: "/var/logs/lrcp/api/error.log",
     out_file: "/var/logs/lrcp/api/out.log",

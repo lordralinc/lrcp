@@ -78,7 +78,7 @@ read -p "Порт gRPC: > " GRPC_PORT
 
 touch /home/lradmin/lrcp/config.toml
 
-poetry run manage server setup --secret_key "$(openssl rand -hex 32)" --database_url '/home/lradmin/lrcp/db.sqlite3' --api_url $API_URL --master_ip $GRPC_IP --master_port $GRPC_PORT
+poetry run manage server setup --secret_key "$(openssl rand -hex 32)" --database_url 'sqlite:///home/lradmin/lrcp/db.sqlite3' --api_url $API_URL --master_ip $GRPC_IP --master_port $GRPC_PORT
 
 cd web || (echo "Folder web not exists" && exit)
 npm install
