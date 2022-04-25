@@ -1,7 +1,7 @@
 const extraData = {
   version: "1.0.0",
   namespace: "LRCP",
-  cwd: '/home/lradmin'
+  cwd: '/home/lradmin/lrcp'
 }
 
 

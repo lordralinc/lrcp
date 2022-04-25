@@ -73,6 +73,14 @@ tests = ["pytest (>=3.2.1,!=3.3.0)"]
 typecheck = ["mypy"]
 
 [[package]]
+name = "bidict"
+version = "0.22.0"
+description = "The bidirectional mapping library for Python."
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[[package]]
 name = "certifi"
 version = "2021.10.8"
 description = "Python package for providing Mozilla's CA Bundle."
@@ -425,6 +433,18 @@ python-versions = ">=3.5"
 cli = ["click (>=5.0)"]
 
 [[package]]
+name = "python-engineio"
+version = "4.3.2"
+description = "Engine.IO server and client for Python"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.extras]
+asyncio_client = ["aiohttp (>=3.4)"]
+client = ["requests (>=2.21.0)", "websocket-client (>=0.54.0)"]
+
+[[package]]
 name = "python-jose"
 version = "3.3.0"
 description = "JOSE implementation in Python"
@@ -453,6 +473,22 @@ python-versions = "*"
 
 [package.dependencies]
 six = ">=1.4.0"
+
+[[package]]
+name = "python-socketio"
+version = "5.6.0"
+description = "Socket.IO server and client for Python"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+bidict = ">=0.21.0"
+python-engineio = ">=4.3.0"
+
+[package.extras]
+asyncio_client = ["aiohttp (>=3.4)"]
+client = ["requests (>=2.21.0)", "websocket-client (>=0.54.0)"]
 
 [[package]]
 name = "pytz"
@@ -789,7 +825,7 @@ h11 = ">=0.9.0,<1"
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.10,<4.0"
-content-hash = "c57fd666be133858eaf910a0757e5dba55dfb0869d9df0869c8f5b3552205cbb"
+content-hash = "43059de7d16915b82fe4ed7366d41b8c9d45e6793b1bfcce42aa453476655985"
 
 [metadata.files]
 aiosqlite = [
@@ -823,6 +859,10 @@ bcrypt = [
     {file = "bcrypt-3.2.0-cp36-abi3-win32.whl", hash = "sha256:a67fb841b35c28a59cebed05fbd3e80eea26e6d75851f0574a9273c80f3e9b55"},
     {file = "bcrypt-3.2.0-cp36-abi3-win_amd64.whl", hash = "sha256:81fec756feff5b6818ea7ab031205e1d323d8943d237303baca2c5f9c7846f34"},
     {file = "bcrypt-3.2.0.tar.gz", hash = "sha256:5b93c1726e50a93a033c36e5ca7fdcd29a5c7395af50a6892f5d9e7c6cfbfb29"},
+]
+bidict = [
+    {file = "bidict-0.22.0-py3-none-any.whl", hash = "sha256:415126d23a0c81e1a8c584a8fb1f6905ea090c772571803aeee0a2242e8e7ba0"},
+    {file = "bidict-0.22.0.tar.gz", hash = "sha256:5c826b3e15e97cc6e615de295756847c282a79b79c5430d3bfc909b1ac9f5bd8"},
 ]
 certifi = [
     {file = "certifi-2021.10.8-py2.py3-none-any.whl", hash = "sha256:d62a0163eb4c2344ac042ab2bdf75399a71a2d8c7d47eac2e2ee91b9d6339569"},
@@ -1279,12 +1319,20 @@ python-dotenv = [
     {file = "python-dotenv-0.20.0.tar.gz", hash = "sha256:b7e3b04a59693c42c36f9ab1cc2acc46fa5df8c78e178fc33a8d4cd05c8d498f"},
     {file = "python_dotenv-0.20.0-py3-none-any.whl", hash = "sha256:d92a187be61fe482e4fd675b6d52200e7be63a12b724abbf931a40ce4fa92938"},
 ]
+python-engineio = [
+    {file = "python-engineio-4.3.2.tar.gz", hash = "sha256:e02f8d6686663408533726be2d4ceb403914fd17285d247791c6a91623777bdd"},
+    {file = "python_engineio-4.3.2-py3-none-any.whl", hash = "sha256:cd3dfa8a939471db60d2704ab0108493c827f399ed5f59c8217e3c3b02c9ea64"},
+]
 python-jose = [
     {file = "python-jose-3.3.0.tar.gz", hash = "sha256:55779b5e6ad599c6336191246e95eb2293a9ddebd555f796a65f838f07e5d78a"},
     {file = "python_jose-3.3.0-py2.py3-none-any.whl", hash = "sha256:9b1376b023f8b298536eedd47ae1089bcdb848f1535ab30555cd92002d78923a"},
 ]
 python-multipart = [
     {file = "python-multipart-0.0.5.tar.gz", hash = "sha256:f7bb5f611fc600d15fa47b3974c8aa16e93724513b49b5f95c81e6624c83fa43"},
+]
+python-socketio = [
+    {file = "python-socketio-5.6.0.tar.gz", hash = "sha256:f1f2eabdea500dbcb384902418cacedd98b7fe4d0fed818415ddf8af10e428fa"},
+    {file = "python_socketio-5.6.0-py3-none-any.whl", hash = "sha256:41d6d93831aac6e0e4917dee2a1d0a0fadaa3fb362d34fc14e98c379e6f20503"},
 ]
 pytz = [
     {file = "pytz-2022.1-py2.py3-none-any.whl", hash = "sha256:e68985985296d9a66a881eb3193b0906246245294a881e7c8afe623866ac6a5c"},

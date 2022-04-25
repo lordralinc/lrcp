@@ -30,7 +30,7 @@ apt-get -y upgrade
 check_result $? 'apt-get upgrade failed'
 
 apt-get install -y curl git wget build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget libbz2-dev
-
+apt-get install -y default-jre
 
 cd /tmp || (echo "Folder tmp not exists" && exit)
 wget https://www.python.org/ftp/python/3.10.0/Python-3.10.0.tar.xz
@@ -64,6 +64,7 @@ echo install depends
 python3.10 -m pip install -U pip
 python3.10 -m pip install -U poetry
 npm install pm2 -g
+npm install @openapitools/openapi-generator-cli -g
 pm2 startup
 
 cd lrcp || (echo "Folder lrcp not exists" && exit)
@@ -74,6 +75,9 @@ read -p "Введите URL API: > " API_URL
 ip a
 read -p "Введите ip адресс gRPC: > " GRPC_IP
 read -p "Порт gRPC: > " GRPC_PORT
+
+touch /home/lradmin/lrcp/config.toml
+
 poetry run manage server setup --secret_key "$(openssl rand -hex 32)" --database_url '/home/lradmin/lrcp/db.sqlite3' --api_url $API_URL --master_ip $GRPC_IP --master_port $GRPC_PORT
 
 cd web || (echo "Folder web not exists" && exit)
@@ -83,4 +87,16 @@ cd ..
 
 pm2 start ecosystem.config.js --only 'LRCP API'
 
-sh ./scripts/gen_openapi.sh
+cd web || (echo "Folder web not exists" && exit)
+rm -r src/api
+
+openapi-generator-cli generate -i $API_URL/openapi.json -o src/api -g typescript-axios
+
+to_delete='git_push.sh .openapi-generator .gitignore .npmignore .openapi-generator-ignore'
+for to_delete_file in $to_delete ; do
+    rm -r src/api/$to_delete_file
+done
+rm openapitools.json
+
+cd ..
+
