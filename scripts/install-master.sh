@@ -90,13 +90,28 @@ pm2 start ecosystem.config.js --only 'LRCP API'
 cd web || (echo "Folder web not exists" && exit)
 rm -r src/api
 
-openapi-generator-cli generate -i $API_URL/openapi.json -o src/api -g typescript-axios
+curl "$API_URL"/openapi.json  > openapi.json
+
+openapi-generator-cli generate -i ./openapi.json -o src/api -g typescript-axios
+
+rm ./openapi.json
 
 to_delete='git_push.sh .openapi-generator .gitignore .npmignore .openapi-generator-ignore'
 for to_delete_file in $to_delete ; do
     rm -r src/api/$to_delete_file
 done
 rm openapitools.json
-
+npm run build
 cd ..
 
+
+echo "  _     ____   ____ ____    "
+echo " | |   |  _ \ / ___|  _ \   "
+echo " | |   | |_) | |   | |_) |  "
+echo " | |___|  _ <| |___|  __/   "
+echo " |_____|_| \_\\____|_|      "
+echo "                            "
+echo "                            "
+echo " API Endpoint: $API_URL     "
+echo " Build web:  /home/lradmin/lrcp/web/build"
+echo " Next: create user by poetry run manage db create_user --help"
