@@ -67,9 +67,11 @@ poetry build
 
 
 python3.10 -m venv /var/lib/lrcp/env > /dev/null 2>&1
+/var/lib/lrcp/env/bin/python3.10 -m pip install protobuf > /dev/null 2>&1
 /var/lib/lrcp/env/bin/python3.10 -m pip install -r requirements.txt > /dev/null 2>&1
 poetry build > /dev/null 2>&1
 /var/lib/lrcp/env/bin/python3.10 -m pip install dist/*.whl > /dev/null 2>&1
+
 
 echo "/var/lib/lrcp/env/bin/python3.10 -m lrcp" > /usr/bin/lrcp > /dev/null 2>&1
 chmod +x /usr/bin/lrcp > /dev/null 2>&1
