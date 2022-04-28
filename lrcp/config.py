@@ -25,7 +25,7 @@ AnyDsn = typing.Union[MySQLDsn, SQLiteDsn, PostgresDsn]
 
 class ConfigGeneral(BaseModel):
     debug: bool = Field(False)
-    database_url: str = Field('sqlite://db.sqlite3')
+    database_url: str = Field('sqlite:///var/lib/lrcp/db.sqlite3')
     secret_key: str = Field('')
 
 
