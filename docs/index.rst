@@ -11,3 +11,5 @@ LR Control Panel
 
    summary
    structure
+   work_scheme
+   setup
