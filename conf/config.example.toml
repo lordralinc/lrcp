@@ -1,6 +1,6 @@
 [general]
 debug=0
-database_url='sqlite:///var/lib/lrcp/db.sqlite3'
+database_url='sqlite://db.sqlite3'
 secret_key=''
 
 [api]

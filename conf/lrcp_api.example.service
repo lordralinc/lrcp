@@ -1,0 +1,14 @@
+[Unit]
+Description=API for LRCP
+Documentation=http://lrcp.readthedocs.io/
+After=network.target
+
+[Service]
+User=root
+Group=www-data
+WorkingDirectory=${cwd}
+ExecStart=poetry run uvicorn lrcp.api.app:app --host ${ip_address} --port ${port} --log-level info
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

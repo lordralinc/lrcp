@@ -29,7 +29,7 @@ fi
 apt-get -y upgrade
 check_result $? 'apt-get upgrade failed'
 
-apt-get install -y git wget build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget libbz2-dev
+apt-get install -y wget build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget libbz2-dev
 
 cd /tmp || (echo "Folder tmp not exists" && exit)
 wget https://www.python.org/ftp/python/3.10.0/Python-3.10.0.tar.xz
