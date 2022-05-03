@@ -29,10 +29,11 @@ import {
 import { AdaptivityProps } from '@vkontakte/vkui/src/components/AdaptivityProvider/AdaptivityContext'
 import { SkeletonTheme } from 'react-loading-skeleton'
 
-import { Configuration, GetSelfUserResponse, UserApi } from './api'
+import { GetSelfUserResponse, UserApi } from './api'
 import { ApplicationInfo } from './ApplicationInfo'
 import { CenterCol, IMarkupTab, LeftCol, RightCol } from './components'
-import { PAGES, POPUP_IDS, ROUTER, STORAGE_KEYS, URLS, VIEWS_IDS } from './const'
+import { PAGES, POPUP_IDS, ROUTER, URLS, VIEWS_IDS } from './const'
+import { getApiConfig } from './utils'
 import { AuthView, HomeView, MasterView, ServersView, SettingsView } from './views'
 
 interface IBaseApplicationProps extends RouterProps, AdaptivityProps {
@@ -43,7 +44,6 @@ interface IBaseApplicationProps extends RouterProps, AdaptivityProps {
 }
 
 interface IBaseApplicationState {
-  apiConfig?: Configuration;
   currentUser: GetSelfUserResponse | null;
   snackbar: JSX.Element | null;
 }
@@ -61,17 +61,8 @@ class BaseApplication extends React.Component<IBaseApplicationProps,
   componentDidMount() {
     let currentUser: GetSelfUserResponse | null
     let redirectToAuth = false
-    let apiConfig: Configuration
 
-    if (!localStorage.getItem(STORAGE_KEYS.TOKEN)) {
-      apiConfig = new Configuration({})
-    } else {
-      apiConfig = new Configuration({
-        accessToken: localStorage.getItem(STORAGE_KEYS.TOKEN) || undefined
-      })
-    }
-
-    new UserApi(apiConfig)
+    new UserApi(getApiConfig())
       .getSelf()
       .then((response) => {
         currentUser = response.data
@@ -79,7 +70,6 @@ class BaseApplication extends React.Component<IBaseApplicationProps,
       .catch(() => {
         redirectToAuth = true
         currentUser = null
-        apiConfig = new Configuration({})
         this.setState({
           snackbar: (
             <Snackbar
@@ -97,7 +87,7 @@ class BaseApplication extends React.Component<IBaseApplicationProps,
         })
       })
       .finally(() => {
-        this.setState({ apiConfig, currentUser })
+        this.setState({ currentUser })
         if (redirectToAuth) this.props.router.replacePage(URLS.AUTH_HOME)
       })
   }

@@ -1,6 +1,7 @@
 from . import (
     get,
-    delete
+    delete,
+    statistics
 )
 
 from .monitor.router import router
@@ -8,5 +9,6 @@ from .monitor.router import router
 routers = [
     get.router,
     delete.router,
-    router
+    router,
+    statistics.router,
 ]

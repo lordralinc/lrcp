@@ -25,6 +25,21 @@ class ServerServicerStub(object):
                 request_serializer=lrcp_dot_grpc__data_dot_server__pb2.CreateServerRequest.SerializeToString,
                 response_deserializer=lrcp_dot_grpc__data_dot_server__pb2.CreateServerResponse.FromString,
                 )
+        self.CollectMemoryInfo = channel.unary_unary(
+                '/ServerServicer/CollectMemoryInfo',
+                request_serializer=lrcp_dot_grpc__data_dot_server__pb2.CollectCollectMemoryRequest.SerializeToString,
+                response_deserializer=lrcp_dot_grpc__data_dot_base__pb2.BaseResponse.FromString,
+                )
+        self.CollectCPUInfo = channel.unary_unary(
+                '/ServerServicer/CollectCPUInfo',
+                request_serializer=lrcp_dot_grpc__data_dot_server__pb2.CollectCPUInfoRequest.SerializeToString,
+                response_deserializer=lrcp_dot_grpc__data_dot_base__pb2.BaseResponse.FromString,
+                )
+        self.CollectNetInfo = channel.unary_unary(
+                '/ServerServicer/CollectNetInfo',
+                request_serializer=lrcp_dot_grpc__data_dot_server__pb2.CollectNetInfoRequest.SerializeToString,
+                response_deserializer=lrcp_dot_grpc__data_dot_base__pb2.BaseResponse.FromString,
+                )
 
 
 class ServerServicerServicer(object):
@@ -42,6 +57,24 @@ class ServerServicerServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def CollectMemoryInfo(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def CollectCPUInfo(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def CollectNetInfo(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_ServerServicerServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -54,6 +87,21 @@ def add_ServerServicerServicer_to_server(servicer, server):
                     servicer.CreateServer,
                     request_deserializer=lrcp_dot_grpc__data_dot_server__pb2.CreateServerRequest.FromString,
                     response_serializer=lrcp_dot_grpc__data_dot_server__pb2.CreateServerResponse.SerializeToString,
+            ),
+            'CollectMemoryInfo': grpc.unary_unary_rpc_method_handler(
+                    servicer.CollectMemoryInfo,
+                    request_deserializer=lrcp_dot_grpc__data_dot_server__pb2.CollectCollectMemoryRequest.FromString,
+                    response_serializer=lrcp_dot_grpc__data_dot_base__pb2.BaseResponse.SerializeToString,
+            ),
+            'CollectCPUInfo': grpc.unary_unary_rpc_method_handler(
+                    servicer.CollectCPUInfo,
+                    request_deserializer=lrcp_dot_grpc__data_dot_server__pb2.CollectCPUInfoRequest.FromString,
+                    response_serializer=lrcp_dot_grpc__data_dot_base__pb2.BaseResponse.SerializeToString,
+            ),
+            'CollectNetInfo': grpc.unary_unary_rpc_method_handler(
+                    servicer.CollectNetInfo,
+                    request_deserializer=lrcp_dot_grpc__data_dot_server__pb2.CollectNetInfoRequest.FromString,
+                    response_serializer=lrcp_dot_grpc__data_dot_base__pb2.BaseResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -96,5 +144,56 @@ class ServerServicer(object):
         return grpc.experimental.unary_unary(request, target, '/ServerServicer/CreateServer',
             lrcp_dot_grpc__data_dot_server__pb2.CreateServerRequest.SerializeToString,
             lrcp_dot_grpc__data_dot_server__pb2.CreateServerResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def CollectMemoryInfo(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/ServerServicer/CollectMemoryInfo',
+            lrcp_dot_grpc__data_dot_server__pb2.CollectCollectMemoryRequest.SerializeToString,
+            lrcp_dot_grpc__data_dot_base__pb2.BaseResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def CollectCPUInfo(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/ServerServicer/CollectCPUInfo',
+            lrcp_dot_grpc__data_dot_server__pb2.CollectCPUInfoRequest.SerializeToString,
+            lrcp_dot_grpc__data_dot_base__pb2.BaseResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def CollectNetInfo(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/ServerServicer/CollectNetInfo',
+            lrcp_dot_grpc__data_dot_server__pb2.CollectNetInfoRequest.SerializeToString,
+            lrcp_dot_grpc__data_dot_base__pb2.BaseResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

@@ -1,7 +1,9 @@
 import asyncio
 import typing
+import datetime
 
 import grpc
+import ralisem
 import socketio
 
 from lrcp.db import Server
@@ -28,34 +30,37 @@ class ConnectionManager:
     async def check_server(self, server_id: int):
         server = await Server.get(id=server_id)
         base_request = base_types.BaseRequest(api_key=server.api_key)
+        sem = ralisem.FixedNewPreviousDelaySemaphore(
+            access_times=1, per=datetime.timedelta(seconds=5)
+        )
         while server_id in self.servers:
-            try:
-                with GrpcClient(server.ip_address, server.grpc_port) as client:
-                    memory_info = client.GetMemoryInfo(base_request)
+            async with sem:
+                try:
+                    with GrpcClient(server.ip_address, server.grpc_port) as client:
+                        memory_info = client.GetMemoryInfo(base_request)
+                        await self.sio.emit(
+                            'info.memory',
+                            grpc_message_to_dict(memory_info),
+                            room=server.id
+                        )
+                        cpu_info = client.GetCPUInfo(base_request)
+                        await self.sio.emit(
+                            'info.cpu',
+                            grpc_message_to_dict(cpu_info),
+                            room=server_id
+                        )
+                        net_info = client.GetNetInfo(base_request)
+                        await self.sio.emit(
+                            'info.net',
+                            grpc_message_to_dict(net_info),
+                            room=server_id
+                        )
+                except grpc.RpcError as ex:
                     await self.sio.emit(
-                        'info.memory',
-                        grpc_message_to_dict(memory_info),
+                        'error.server_offline',
+                        {},
                         room=server.id
                     )
-                    cpu_info = client.GetCPUInfo(base_request)
-                    await self.sio.emit(
-                        'info.cpu',
-                        grpc_message_to_dict(cpu_info),
-                        room=server_id
-                    )
-                    net_info = client.GetNetInfo(base_request)
-                    await self.sio.emit(
-                        'info.net',
-                        grpc_message_to_dict(net_info),
-                        room=server_id
-                    )
-                    await asyncio.sleep(1)
-            except grpc.RpcError as ex:
-                await self.sio.emit(
-                    'error.server_offline',
-                    {},
-                    room=server.id
-                )
-                await self.sio.close_room(server.id)
-            except Exception as ex:
-                pass
+                    await self.sio.close_room(server.id)
+                except Exception as ex:
+                    pass

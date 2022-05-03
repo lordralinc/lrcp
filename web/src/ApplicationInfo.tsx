@@ -81,7 +81,7 @@ export class ApplicationInfo {
         onClose={() => this.setSnackbar(null)}
         before={
           <Avatar size={16}>
-            <Icon16DoneCircle fill="#0f0" width={14} height={14} />
+            <Icon16DoneCircle fill="#0f0" width={14} height={14}/>
           </Avatar>
         }
       >
@@ -97,7 +97,7 @@ export class ApplicationInfo {
         onClose={() => this.setSnackbar(null)}
         before={
           <Avatar size={16}>
-            <Icon16InfoCirle width={14} height={14} />
+            <Icon16InfoCirle width={14} height={14}/>
           </Avatar>
         }
       >
@@ -113,7 +113,7 @@ export class ApplicationInfo {
         onClose={() => this.setSnackbar(null)}
         before={
           <Avatar size={16}>
-            <Icon16ErrorCircle fill="#f00" width={14} height={14} />
+            <Icon16ErrorCircle fill="#f00" width={14} height={14}/>
           </Avatar>
         }
       >

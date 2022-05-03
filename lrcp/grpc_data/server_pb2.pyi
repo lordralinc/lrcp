@@ -5,6 +5,7 @@ isort:skip_file
 import builtins
 import google.protobuf.descriptor
 import google.protobuf.message
+import lrcp.grpc_data.base_pb2
 import typing
 import typing_extensions
 
@@ -40,3 +41,51 @@ class CreateServerResponse(google.protobuf.message.Message):
         ) -> None: ...
     def ClearField(self, field_name: typing_extensions.Literal["api_key",b"api_key"]) -> None: ...
 global___CreateServerResponse = CreateServerResponse
+
+class CollectCollectMemoryRequest(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+    API_KEY_FIELD_NUMBER: builtins.int
+    INFO_FIELD_NUMBER: builtins.int
+    api_key: typing.Text
+    @property
+    def info(self) -> lrcp.grpc_data.base_pb2.GetMemoryInfoResponse: ...
+    def __init__(self,
+        *,
+        api_key: typing.Text = ...,
+        info: typing.Optional[lrcp.grpc_data.base_pb2.GetMemoryInfoResponse] = ...,
+        ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["info",b"info"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["api_key",b"api_key","info",b"info"]) -> None: ...
+global___CollectCollectMemoryRequest = CollectCollectMemoryRequest
+
+class CollectCPUInfoRequest(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+    API_KEY_FIELD_NUMBER: builtins.int
+    INFO_FIELD_NUMBER: builtins.int
+    api_key: typing.Text
+    @property
+    def info(self) -> lrcp.grpc_data.base_pb2.GetCPUInfoResponse: ...
+    def __init__(self,
+        *,
+        api_key: typing.Text = ...,
+        info: typing.Optional[lrcp.grpc_data.base_pb2.GetCPUInfoResponse] = ...,
+        ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["info",b"info"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["api_key",b"api_key","info",b"info"]) -> None: ...
+global___CollectCPUInfoRequest = CollectCPUInfoRequest
+
+class CollectNetInfoRequest(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+    API_KEY_FIELD_NUMBER: builtins.int
+    INFO_FIELD_NUMBER: builtins.int
+    api_key: typing.Text
+    @property
+    def info(self) -> lrcp.grpc_data.base_pb2.GetNetInfoResponse: ...
+    def __init__(self,
+        *,
+        api_key: typing.Text = ...,
+        info: typing.Optional[lrcp.grpc_data.base_pb2.GetNetInfoResponse] = ...,
+        ) -> None: ...
+    def HasField(self, field_name: typing_extensions.Literal["info",b"info"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing_extensions.Literal["api_key",b"api_key","info",b"info"]) -> None: ...
+global___CollectNetInfoRequest = CollectNetInfoRequest

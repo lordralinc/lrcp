@@ -28,17 +28,17 @@ class ClientServicerStub(object):
         self.GetMemoryInfo = channel.unary_unary(
                 '/ClientServicer/GetMemoryInfo',
                 request_serializer=lrcp_dot_grpc__data_dot_base__pb2.BaseRequest.SerializeToString,
-                response_deserializer=lrcp_dot_grpc__data_dot_client__pb2.GetMemoryInfoResponse.FromString,
+                response_deserializer=lrcp_dot_grpc__data_dot_base__pb2.GetMemoryInfoResponse.FromString,
                 )
         self.GetCPUInfo = channel.unary_unary(
                 '/ClientServicer/GetCPUInfo',
                 request_serializer=lrcp_dot_grpc__data_dot_base__pb2.BaseRequest.SerializeToString,
-                response_deserializer=lrcp_dot_grpc__data_dot_client__pb2.GetCPUInfoResponse.FromString,
+                response_deserializer=lrcp_dot_grpc__data_dot_base__pb2.GetCPUInfoResponse.FromString,
                 )
         self.GetNetInfo = channel.unary_unary(
                 '/ClientServicer/GetNetInfo',
                 request_serializer=lrcp_dot_grpc__data_dot_base__pb2.BaseRequest.SerializeToString,
-                response_deserializer=lrcp_dot_grpc__data_dot_client__pb2.GetNetInfoResponse.FromString,
+                response_deserializer=lrcp_dot_grpc__data_dot_base__pb2.GetNetInfoResponse.FromString,
                 )
 
 
@@ -91,17 +91,17 @@ def add_ClientServicerServicer_to_server(servicer, server):
             'GetMemoryInfo': grpc.unary_unary_rpc_method_handler(
                     servicer.GetMemoryInfo,
                     request_deserializer=lrcp_dot_grpc__data_dot_base__pb2.BaseRequest.FromString,
-                    response_serializer=lrcp_dot_grpc__data_dot_client__pb2.GetMemoryInfoResponse.SerializeToString,
+                    response_serializer=lrcp_dot_grpc__data_dot_base__pb2.GetMemoryInfoResponse.SerializeToString,
             ),
             'GetCPUInfo': grpc.unary_unary_rpc_method_handler(
                     servicer.GetCPUInfo,
                     request_deserializer=lrcp_dot_grpc__data_dot_base__pb2.BaseRequest.FromString,
-                    response_serializer=lrcp_dot_grpc__data_dot_client__pb2.GetCPUInfoResponse.SerializeToString,
+                    response_serializer=lrcp_dot_grpc__data_dot_base__pb2.GetCPUInfoResponse.SerializeToString,
             ),
             'GetNetInfo': grpc.unary_unary_rpc_method_handler(
                     servicer.GetNetInfo,
                     request_deserializer=lrcp_dot_grpc__data_dot_base__pb2.BaseRequest.FromString,
-                    response_serializer=lrcp_dot_grpc__data_dot_client__pb2.GetNetInfoResponse.SerializeToString,
+                    response_serializer=lrcp_dot_grpc__data_dot_base__pb2.GetNetInfoResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -160,7 +160,7 @@ class ClientServicer(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/ClientServicer/GetMemoryInfo',
             lrcp_dot_grpc__data_dot_base__pb2.BaseRequest.SerializeToString,
-            lrcp_dot_grpc__data_dot_client__pb2.GetMemoryInfoResponse.FromString,
+            lrcp_dot_grpc__data_dot_base__pb2.GetMemoryInfoResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -177,7 +177,7 @@ class ClientServicer(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/ClientServicer/GetCPUInfo',
             lrcp_dot_grpc__data_dot_base__pb2.BaseRequest.SerializeToString,
-            lrcp_dot_grpc__data_dot_client__pb2.GetCPUInfoResponse.FromString,
+            lrcp_dot_grpc__data_dot_base__pb2.GetCPUInfoResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -194,6 +194,6 @@ class ClientServicer(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/ClientServicer/GetNetInfo',
             lrcp_dot_grpc__data_dot_base__pb2.BaseRequest.SerializeToString,
-            lrcp_dot_grpc__data_dot_client__pb2.GetNetInfoResponse.FromString,
+            lrcp_dot_grpc__data_dot_base__pb2.GetNetInfoResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

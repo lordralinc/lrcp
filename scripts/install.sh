@@ -73,7 +73,7 @@ poetry build > /dev/null 2>&1
 /var/lib/lrcp/env/bin/python3.10 -m pip install dist/*.whl > /dev/null 2>&1
 
 
-echo "/var/lib/lrcp/env/bin/python3.10 -m lrcp" > /usr/bin/lrcp
+echo "sudo /var/lib/lrcp/env/bin/python3.10 -m lrcp client $@" > /usr/bin/lrcp-client
 chmod +x /usr/bin/lrcp > /dev/null 2>&1
 add_result "${Y}Build lrcp ${G}success${RE}"
 
@@ -82,5 +82,5 @@ cd /tmp
 rm -rf lrcp
 rm -rf Python3.10*
 
-add_result "${RESULTS}\n${G}Done${RE}"
+add_result "${G}Done${RE}"
 

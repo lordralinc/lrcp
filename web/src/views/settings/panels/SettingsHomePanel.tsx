@@ -3,7 +3,7 @@ import React from 'react'
 import { AppearanceType } from '@vkontakte/vk-bridge'
 import { FormItem, FormLayout, Group, SegmentedControl } from '@vkontakte/vkui'
 
-import { BasePanel } from '../../../components/BasePanel'
+import { BasePanel } from '../../../components'
 import { IPanelProps } from '../../../types'
 
 export class SettingsHomePanel extends React.Component<IPanelProps, any> {

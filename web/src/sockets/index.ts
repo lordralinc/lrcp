@@ -1,2 +1,2 @@
-export { ServerSocket } from './ServerSocket';
+export { ServerSocket } from './ServerSocket'
 export * from './types'

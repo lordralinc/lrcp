@@ -15,19 +15,11 @@ _sym_db = _symbol_database.Default()
 from lrcp.grpc_data import base_pb2 as lrcp_dot_grpc__data_dot_base__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1blrcp/grpc_data/client.proto\x1a\x19lrcp/grpc_data/base.proto\"L\n\x15GetSystemInfoResponse\x12\x0f\n\x07os_name\x18\x01 \x01(\t\x12\x12\n\nos_release\x18\x02 \x01(\t\x12\x0e\n\x06uptime\x18\x03 \x01(\x02\"\xc7\x08\n\x15GetMemoryInfoResponse\x12\x11\n\tmem_total\x18\x01 \x01(\x04\x12\x10\n\x08mem_free\x18\x02 \x01(\x04\x12\x15\n\rmem_available\x18\x03 \x01(\x04\x12\x0f\n\x07\x62uffers\x18\x04 \x01(\x04\x12\x0e\n\x06\x63\x61\x63hed\x18\x05 \x01(\x04\x12\x13\n\x0bswap_cached\x18\x06 \x01(\x04\x12\x0e\n\x06\x61\x63tive\x18\x07 \x01(\x04\x12\x10\n\x08inactive\x18\x08 \x01(\x04\x12\x13\n\x0b\x61\x63tive_anon\x18\t \x01(\x04\x12\x15\n\rinactive_anon\x18\n \x01(\x04\x12\x13\n\x0b\x61\x63tive_file\x18\x0b \x01(\x04\x12\x15\n\rinactive_file\x18\x0c \x01(\x04\x12\x13\n\x0bunevictable\x18\r \x01(\x04\x12\x0f\n\x07mlocked\x18\x0e \x01(\x04\x12\x12\n\nswap_total\x18\x0f \x01(\x04\x12\x11\n\tswap_free\x18\x10 \x01(\x04\x12\r\n\x05\x64irty\x18\x11 \x01(\x04\x12\x11\n\twriteback\x18\x12 \x01(\x04\x12\x12\n\nanon_pages\x18\x13 \x01(\x04\x12\x0e\n\x06mapped\x18\x14 \x01(\x04\x12\r\n\x05shmem\x18\x15 \x01(\x04\x12\x14\n\x0ckreclaimable\x18\x16 \x01(\x04\x12\x0c\n\x04slab\x18\x17 \x01(\x04\x12\x14\n\x0csreclaimable\x18\x18 \x01(\x04\x12\x12\n\nsunreclaim\x18\x19 \x01(\x04\x12\x14\n\x0ckernel_stack\x18\x1a \x01(\x04\x12\x13\n\x0bpage_tables\x18\x1b \x01(\x04\x12\x14\n\x0cnfs_unstable\x18\x1c \x01(\x04\x12\x0e\n\x06\x62ounce\x18\x1d \x01(\x04\x12\x15\n\rwriteback_tmp\x18\x1e \x01(\x04\x12\x14\n\x0c\x63ommit_limit\x18\x1f \x01(\x04\x12\x14\n\x0c\x63ommitted_as\x18  \x01(\x04\x12\x15\n\rvmalloc_total\x18! \x01(\x04\x12\x14\n\x0cvmalloc_used\x18\" \x01(\x04\x12\x15\n\rvmalloc_chunk\x18# \x01(\x04\x12\x0e\n\x06percpu\x18$ \x01(\x04\x12\x1a\n\x12hardware_corrupted\x18% \x01(\x04\x12\x17\n\x0f\x61non_huge_pages\x18& \x01(\x04\x12\x18\n\x10shmem_huge_pages\x18\' \x01(\x04\x12\x18\n\x10shmem_pmd_mapped\x18( \x01(\x04\x12\x17\n\x0f\x66ile_huge_pages\x18) \x01(\x04\x12\x17\n\x0f\x66ile_pmd_mapped\x18* \x01(\x04\x12\x18\n\x10huge_pages_total\x18+ \x01(\x04\x12\x17\n\x0fhuge_pages_free\x18, \x01(\x04\x12\x17\n\x0fhuge_pages_rsvd\x18- \x01(\x04\x12\x17\n\x0fhuge_pages_surp\x18. \x01(\x04\x12\x14\n\x0chugepagesize\x18/ \x01(\x04\x12\x0f\n\x07hugetlb\x18\x30 \x01(\x04\x12\x15\n\rdirect_map_4k\x18\x31 \x01(\x04\x12\x15\n\rdirect_map_2m\x18\x32 \x01(\x04\x12\x15\n\rdirect_map_1g\x18\x33 \x01(\x04\"\xd6\x07\n\x12GetCPUInfoResponse\x12\x12\n\nload_avg_1\x18\x01 \x01(\x02\x12\x12\n\nload_avg_5\x18\x02 \x01(\x02\x12\x13\n\x0bload_avg_15\x18\x03 \x01(\x02\x12\x17\n\x0fprocess_current\x18\x04 \x01(\r\x12\x13\n\x0bprocess_all\x18\x05 \x01(\r\x12\x10\n\x08last_pid\x18\x06 \x01(\r\x12*\n\x05\x63ores\x18\x07 \x03(\x0b\x32\x1b.GetCPUInfoResponse.CPUCore\x12-\n\x04load\x18\x08 \x03(\x0b\x32\x1f.GetCPUInfoResponse.CPULoadInfo\x12\x31\n\x08\x61ll_load\x18\t \x01(\x0b\x32\x1f.GetCPUInfoResponse.CPULoadInfo\x1a\x89\x04\n\x07\x43PUCore\x12\x11\n\tprocessor\x18\x01 \x01(\r\x12\x11\n\tvendor_id\x18\x02 \x01(\t\x12\x12\n\ncpu_family\x18\x03 \x01(\r\x12\r\n\x05model\x18\x04 \x01(\r\x12\x12\n\nmodel_name\x18\x05 \x01(\t\x12\x10\n\x08stepping\x18\x06 \x01(\r\x12\x11\n\tmicrocode\x18\x07 \x01(\t\x12\x0f\n\x07\x63pu_mhz\x18\x08 \x01(\t\x12\x12\n\ncache_size\x18\t \x01(\r\x12\x13\n\x0bphysical_id\x18\n \x01(\r\x12\x10\n\x08siblings\x18\x0b \x01(\r\x12\x0f\n\x07\x63ore_id\x18\x0c \x01(\r\x12\x11\n\tcpu_cores\x18\r \x01(\r\x12\x0e\n\x06\x61picid\x18\x0e \x01(\r\x12\x16\n\x0einitial_apicid\x18\x0f \x01(\r\x12\x0b\n\x03\x66pu\x18\x10 \x01(\x08\x12\x15\n\rfpu_exception\x18\x11 \x01(\x08\x12\x13\n\x0b\x63puid_level\x18\x12 \x01(\r\x12\n\n\x02wp\x18\x13 \x01(\x08\x12\r\n\x05\x66lags\x18\x14 \x03(\t\x12\x0c\n\x04\x62ugs\x18\x15 \x03(\t\x12\x10\n\x08\x62ogomips\x18\x16 \x01(\x02\x12\x10\n\x08tlb_size\x18\x17 \x01(\t\x12\x14\n\x0c\x63lflush_size\x18\x18 \x01(\r\x12\x17\n\x0f\x63\x61\x63he_alignment\x18\x19 \x01(\r\x12\x15\n\raddress_sizes\x18\x1a \x03(\t\x12\x18\n\x10power_management\x18\x1b \x03(\t\x1a\xa8\x01\n\x0b\x43PULoadInfo\x12\x0c\n\x04user\x18\x01 \x01(\x04\x12\x0c\n\x04nice\x18\x02 \x01(\x04\x12\x0e\n\x06system\x18\x03 \x01(\x04\x12\x0c\n\x04idle\x18\x04 \x01(\x04\x12\x0e\n\x06iowait\x18\x05 \x01(\x04\x12\x0b\n\x03irq\x18\x06 \x01(\x04\x12\x10\n\x08soft_irq\x18\x07 \x01(\x04\x12\r\n\x05steal\x18\x08 \x01(\x04\x12\r\n\x05guest\x18\t \x01(\x04\x12\x12\n\nguest_nice\x18\n \x01(\x04\"\xfc\x03\n\x12GetNetInfoResponse\x12\x34\n\ninterfaces\x18\x01 \x03(\x0b\x32 .GetNetInfoResponse.EthInterface\x1a\xaf\x03\n\x0c\x45thInterface\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x39\n\x07receive\x18\x02 \x01(\x0b\x32(.GetNetInfoResponse.EthInterface.Receive\x12;\n\x08transmit\x18\x03 \x01(\x0b\x32).GetNetInfoResponse.EthInterface.Transmit\x1a\x8b\x01\n\x07Receive\x12\r\n\x05\x62ytes\x18\x01 \x01(\x04\x12\x0f\n\x07packets\x18\x02 \x01(\x04\x12\x0e\n\x06\x65rrors\x18\x03 \x01(\x04\x12\x0c\n\x04\x64rop\x18\x04 \x01(\x04\x12\x0c\n\x04\x66ifo\x18\x05 \x01(\x04\x12\r\n\x05\x66rame\x18\x06 \x01(\x04\x12\x12\n\ncompressed\x18\x07 \x01(\x04\x12\x11\n\tmulticast\x18\x08 \x01(\x04\x1a\x8a\x01\n\x08Transmit\x12\r\n\x05\x62ytes\x18\x01 \x01(\x04\x12\x0f\n\x07packets\x18\x02 \x01(\x04\x12\x0e\n\x06\x65rrors\x18\x03 \x01(\x04\x12\x0c\n\x04\x64rop\x18\x04 \x01(\x04\x12\x0c\n\x04\x66ifo\x18\x05 \x01(\x04\x12\r\n\x05\x63olls\x18\x06 \x01(\x04\x12\x0f\n\x07\x63\x61rrier\x18\x07 \x01(\x04\x12\x12\n\ncompressed\x18\x08 \x01(\x04\x32\x8f\x02\n\x0e\x43lientServicer\x12%\n\x04Ping\x12\x0c.BaseRequest\x1a\r.BaseResponse\"\x00\x12\x37\n\rGetSystemInfo\x12\x0c.BaseRequest\x1a\x16.GetSystemInfoResponse\"\x00\x12\x37\n\rGetMemoryInfo\x12\x0c.BaseRequest\x1a\x16.GetMemoryInfoResponse\"\x00\x12\x31\n\nGetCPUInfo\x12\x0c.BaseRequest\x1a\x13.GetCPUInfoResponse\"\x00\x12\x31\n\nGetNetInfo\x12\x0c.BaseRequest\x1a\x13.GetNetInfoResponse\"\x00\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1blrcp/grpc_data/client.proto\x1a\x19lrcp/grpc_data/base.proto\"L\n\x15GetSystemInfoResponse\x12\x0f\n\x07os_name\x18\x01 \x01(\t\x12\x12\n\nos_release\x18\x02 \x01(\t\x12\x0e\n\x06uptime\x18\x03 \x01(\x02\x32\x8f\x02\n\x0e\x43lientServicer\x12%\n\x04Ping\x12\x0c.BaseRequest\x1a\r.BaseResponse\"\x00\x12\x37\n\rGetSystemInfo\x12\x0c.BaseRequest\x1a\x16.GetSystemInfoResponse\"\x00\x12\x37\n\rGetMemoryInfo\x12\x0c.BaseRequest\x1a\x16.GetMemoryInfoResponse\"\x00\x12\x31\n\nGetCPUInfo\x12\x0c.BaseRequest\x1a\x13.GetCPUInfoResponse\"\x00\x12\x31\n\nGetNetInfo\x12\x0c.BaseRequest\x1a\x13.GetNetInfoResponse\"\x00\x62\x06proto3')
 
 
 
 _GETSYSTEMINFORESPONSE = DESCRIPTOR.message_types_by_name['GetSystemInfoResponse']
-_GETMEMORYINFORESPONSE = DESCRIPTOR.message_types_by_name['GetMemoryInfoResponse']
-_GETCPUINFORESPONSE = DESCRIPTOR.message_types_by_name['GetCPUInfoResponse']
-_GETCPUINFORESPONSE_CPUCORE = _GETCPUINFORESPONSE.nested_types_by_name['CPUCore']
-_GETCPUINFORESPONSE_CPULOADINFO = _GETCPUINFORESPONSE.nested_types_by_name['CPULoadInfo']
-_GETNETINFORESPONSE = DESCRIPTOR.message_types_by_name['GetNetInfoResponse']
-_GETNETINFORESPONSE_ETHINTERFACE = _GETNETINFORESPONSE.nested_types_by_name['EthInterface']
-_GETNETINFORESPONSE_ETHINTERFACE_RECEIVE = _GETNETINFORESPONSE_ETHINTERFACE.nested_types_by_name['Receive']
-_GETNETINFORESPONSE_ETHINTERFACE_TRANSMIT = _GETNETINFORESPONSE_ETHINTERFACE.nested_types_by_name['Transmit']
 GetSystemInfoResponse = _reflection.GeneratedProtocolMessageType('GetSystemInfoResponse', (_message.Message,), {
   'DESCRIPTOR' : _GETSYSTEMINFORESPONSE,
   '__module__' : 'lrcp.grpc_data.client_pb2'
@@ -35,89 +27,12 @@ GetSystemInfoResponse = _reflection.GeneratedProtocolMessageType('GetSystemInfoR
   })
 _sym_db.RegisterMessage(GetSystemInfoResponse)
 
-GetMemoryInfoResponse = _reflection.GeneratedProtocolMessageType('GetMemoryInfoResponse', (_message.Message,), {
-  'DESCRIPTOR' : _GETMEMORYINFORESPONSE,
-  '__module__' : 'lrcp.grpc_data.client_pb2'
-  # @@protoc_insertion_point(class_scope:GetMemoryInfoResponse)
-  })
-_sym_db.RegisterMessage(GetMemoryInfoResponse)
-
-GetCPUInfoResponse = _reflection.GeneratedProtocolMessageType('GetCPUInfoResponse', (_message.Message,), {
-
-  'CPUCore' : _reflection.GeneratedProtocolMessageType('CPUCore', (_message.Message,), {
-    'DESCRIPTOR' : _GETCPUINFORESPONSE_CPUCORE,
-    '__module__' : 'lrcp.grpc_data.client_pb2'
-    # @@protoc_insertion_point(class_scope:GetCPUInfoResponse.CPUCore)
-    })
-  ,
-
-  'CPULoadInfo' : _reflection.GeneratedProtocolMessageType('CPULoadInfo', (_message.Message,), {
-    'DESCRIPTOR' : _GETCPUINFORESPONSE_CPULOADINFO,
-    '__module__' : 'lrcp.grpc_data.client_pb2'
-    # @@protoc_insertion_point(class_scope:GetCPUInfoResponse.CPULoadInfo)
-    })
-  ,
-  'DESCRIPTOR' : _GETCPUINFORESPONSE,
-  '__module__' : 'lrcp.grpc_data.client_pb2'
-  # @@protoc_insertion_point(class_scope:GetCPUInfoResponse)
-  })
-_sym_db.RegisterMessage(GetCPUInfoResponse)
-_sym_db.RegisterMessage(GetCPUInfoResponse.CPUCore)
-_sym_db.RegisterMessage(GetCPUInfoResponse.CPULoadInfo)
-
-GetNetInfoResponse = _reflection.GeneratedProtocolMessageType('GetNetInfoResponse', (_message.Message,), {
-
-  'EthInterface' : _reflection.GeneratedProtocolMessageType('EthInterface', (_message.Message,), {
-
-    'Receive' : _reflection.GeneratedProtocolMessageType('Receive', (_message.Message,), {
-      'DESCRIPTOR' : _GETNETINFORESPONSE_ETHINTERFACE_RECEIVE,
-      '__module__' : 'lrcp.grpc_data.client_pb2'
-      # @@protoc_insertion_point(class_scope:GetNetInfoResponse.EthInterface.Receive)
-      })
-    ,
-
-    'Transmit' : _reflection.GeneratedProtocolMessageType('Transmit', (_message.Message,), {
-      'DESCRIPTOR' : _GETNETINFORESPONSE_ETHINTERFACE_TRANSMIT,
-      '__module__' : 'lrcp.grpc_data.client_pb2'
-      # @@protoc_insertion_point(class_scope:GetNetInfoResponse.EthInterface.Transmit)
-      })
-    ,
-    'DESCRIPTOR' : _GETNETINFORESPONSE_ETHINTERFACE,
-    '__module__' : 'lrcp.grpc_data.client_pb2'
-    # @@protoc_insertion_point(class_scope:GetNetInfoResponse.EthInterface)
-    })
-  ,
-  'DESCRIPTOR' : _GETNETINFORESPONSE,
-  '__module__' : 'lrcp.grpc_data.client_pb2'
-  # @@protoc_insertion_point(class_scope:GetNetInfoResponse)
-  })
-_sym_db.RegisterMessage(GetNetInfoResponse)
-_sym_db.RegisterMessage(GetNetInfoResponse.EthInterface)
-_sym_db.RegisterMessage(GetNetInfoResponse.EthInterface.Receive)
-_sym_db.RegisterMessage(GetNetInfoResponse.EthInterface.Transmit)
-
 _CLIENTSERVICER = DESCRIPTOR.services_by_name['ClientServicer']
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
   _GETSYSTEMINFORESPONSE._serialized_start=58
   _GETSYSTEMINFORESPONSE._serialized_end=134
-  _GETMEMORYINFORESPONSE._serialized_start=137
-  _GETMEMORYINFORESPONSE._serialized_end=1232
-  _GETCPUINFORESPONSE._serialized_start=1235
-  _GETCPUINFORESPONSE._serialized_end=2217
-  _GETCPUINFORESPONSE_CPUCORE._serialized_start=1525
-  _GETCPUINFORESPONSE_CPUCORE._serialized_end=2046
-  _GETCPUINFORESPONSE_CPULOADINFO._serialized_start=2049
-  _GETCPUINFORESPONSE_CPULOADINFO._serialized_end=2217
-  _GETNETINFORESPONSE._serialized_start=2220
-  _GETNETINFORESPONSE._serialized_end=2728
-  _GETNETINFORESPONSE_ETHINTERFACE._serialized_start=2297
-  _GETNETINFORESPONSE_ETHINTERFACE._serialized_end=2728
-  _GETNETINFORESPONSE_ETHINTERFACE_RECEIVE._serialized_start=2448
-  _GETNETINFORESPONSE_ETHINTERFACE_RECEIVE._serialized_end=2587
-  _GETNETINFORESPONSE_ETHINTERFACE_TRANSMIT._serialized_start=2590
-  _GETNETINFORESPONSE_ETHINTERFACE_TRANSMIT._serialized_end=2728
-  _CLIENTSERVICER._serialized_start=2731
-  _CLIENTSERVICER._serialized_end=3002
+  _CLIENTSERVICER._serialized_start=137
+  _CLIENTSERVICER._serialized_end=408
 # @@protoc_insertion_point(module_scope)

@@ -2,7 +2,9 @@ import { Page, Router } from '@happysanta/router'
 
 import { PageTree, PageTreeItem } from './features'
 
-export const DEBUG = process.env.NODE_ENV === 'development'
+
+export const DEBUG = import.meta.env.DEV
+export const API_DOMAIN = import.meta.env.VITE_API_URL
 
 export const STORAGE_KEYS = {
   TOKEN: 'LRCP_ACCESS_TOKEN',

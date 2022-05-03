@@ -17,6 +17,18 @@ class ServerServicerStub:
         lrcp.grpc_data.server_pb2.CreateServerRequest,
         lrcp.grpc_data.server_pb2.CreateServerResponse]
 
+    CollectMemoryInfo: grpc.UnaryUnaryMultiCallable[
+        lrcp.grpc_data.server_pb2.CollectCollectMemoryRequest,
+        lrcp.grpc_data.base_pb2.BaseResponse]
+
+    CollectCPUInfo: grpc.UnaryUnaryMultiCallable[
+        lrcp.grpc_data.server_pb2.CollectCPUInfoRequest,
+        lrcp.grpc_data.base_pb2.BaseResponse]
+
+    CollectNetInfo: grpc.UnaryUnaryMultiCallable[
+        lrcp.grpc_data.server_pb2.CollectNetInfoRequest,
+        lrcp.grpc_data.base_pb2.BaseResponse]
+
 
 class ServerServicerServicer(metaclass=abc.ABCMeta):
     @abc.abstractmethod
@@ -30,6 +42,24 @@ class ServerServicerServicer(metaclass=abc.ABCMeta):
         request: lrcp.grpc_data.server_pb2.CreateServerRequest,
         context: grpc.ServicerContext,
     ) -> lrcp.grpc_data.server_pb2.CreateServerResponse: ...
+
+    @abc.abstractmethod
+    def CollectMemoryInfo(self,
+        request: lrcp.grpc_data.server_pb2.CollectCollectMemoryRequest,
+        context: grpc.ServicerContext,
+    ) -> lrcp.grpc_data.base_pb2.BaseResponse: ...
+
+    @abc.abstractmethod
+    def CollectCPUInfo(self,
+        request: lrcp.grpc_data.server_pb2.CollectCPUInfoRequest,
+        context: grpc.ServicerContext,
+    ) -> lrcp.grpc_data.base_pb2.BaseResponse: ...
+
+    @abc.abstractmethod
+    def CollectNetInfo(self,
+        request: lrcp.grpc_data.server_pb2.CollectNetInfoRequest,
+        context: grpc.ServicerContext,
+    ) -> lrcp.grpc_data.base_pb2.BaseResponse: ...
 
 
 def add_ServerServicerServicer_to_server(servicer: ServerServicerServicer, server: grpc.Server) -> None: ...

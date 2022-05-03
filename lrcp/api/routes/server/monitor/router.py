@@ -40,8 +40,6 @@ async def enter(sid, data: dict):
 @sio.event
 async def exit(sid, data: dict):
     sio.leave_room(sid, data['server_id'])
+    if str(data['server_id']) not in sio.manager.rooms:
+        manager.remove_rever(data['server_id'])
 
-
-@sio.event
-async def disconnect(sid):
-    print('disconnect ', sid)

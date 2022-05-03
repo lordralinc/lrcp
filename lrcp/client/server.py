@@ -1,6 +1,5 @@
 import grpc
 
-import lrcp.grpc_data
 from lrcp.client.utils import check_api_token
 from lrcp.grpc_data import base_types, client_types, client_grpc
 from lrcp.utils.cpu_info import CPUInfo
@@ -37,29 +36,29 @@ class ClientServicer(client_grpc.ClientServicerServicer):
             self,
             request: base_types.BaseRequest,
             context: grpc.ServicerContext,
-    ) -> client_types.GetMemoryInfoResponse:
+    ) -> base_types.GetMemoryInfoResponse:
         check_api_token(request.api_key)
         memory = Meminfo.get()
-        return client_types.GetMemoryInfoResponse(**memory.dict())
+        return base_types.GetMemoryInfoResponse(**memory.dict())
 
     async def GetCPUInfo(
             self,
             request: base_types.BaseRequest,
             context: grpc.ServicerContext
-    ) -> client_types.GetCPUInfoResponse:
+    ) -> base_types.GetCPUInfoResponse:
         check_api_token(request.api_key)
         cpu = CPUInfo.get()
-        return client_types.GetCPUInfoResponse(**cpu.dict())
+        return base_types.GetCPUInfoResponse(**cpu.dict())
 
     async def GetNetInfo(
             self,
             request: base_types.BaseRequest,
             context: grpc.ServicerContext,
-    ) -> client_types.GetNetInfoResponse:
-        return client_types.GetNetInfoResponse(
-            interfaces=[client_types.GetNetInfoResponse.EthInterface(
+    ) -> base_types.GetNetInfoResponse:
+        return base_types.GetNetInfoResponse(
+            interfaces=[base_types.GetNetInfoResponse.EthInterface(
                 name=x.name,
-                transmit=client_types.GetNetInfoResponse.EthInterface.Transmit(**x.transmit.dict()),
-                receive=client_types.GetNetInfoResponse.EthInterface.Receive(**x.receive.dict()),
+                transmit=base_types.GetNetInfoResponse.EthInterface.Transmit(**x.transmit.dict()),
+                receive=base_types.GetNetInfoResponse.EthInterface.Receive(**x.receive.dict()),
             ) for x in NetInfo.get()]
         )

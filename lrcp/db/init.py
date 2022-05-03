@@ -1,7 +1,5 @@
 from tortoise import Tortoise
 
-from lrcp.config import AnyDsn
-
 
 async def init_database(db_url: str):
     await Tortoise.init(

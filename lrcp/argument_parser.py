@@ -48,17 +48,44 @@ def create_server():
 
 
 def create_db():
-    from lrcp.scripts.create_user import create_user
+    from lrcp.scripts.database_user import (
+        create_user,
+        set_active_user,
+        show_list_user,
+        set_full_name_user,
+        set_email_user
+    )
 
     db_sp = subparsers.add_parser('db', help="Управление базой данных")
     db_sps = db_sp.add_subparsers()
 
-    create_user_sp = db_sps.add_parser('create_user', help="Создать пользователя")
+    db_user_sp = db_sps.add_parser('user', help="Управление пользователями")
+    db_user_sps = db_user_sp.add_subparsers()
+
+    list_user_sp = db_user_sps.add_parser('list', help="Просмотр списка пользователей")
+    list_user_sp.set_defaults(func=show_list_user)
+
+    create_user_sp = db_user_sps.add_parser('create', help="Создать пользователя")
     create_user_sp.add_argument('--username', type=str)
     create_user_sp.add_argument('--password', type=str)
     create_user_sp.add_argument('--name', type=str, default="")
     create_user_sp.add_argument('--email', type=str, default="")
     create_user_sp.set_defaults(func=create_user)
+
+    set_active_user_sp = db_user_sps.add_parser('set_active', help="Установить активность")
+    set_active_user_sp.add_argument('--username', type=str)
+    set_active_user_sp.add_argument('--is_active', action=argparse.BooleanOptionalAction, default=False)
+    set_active_user_sp.set_defaults(func=set_active_user)
+
+    set_full_name_user_sp = db_user_sps.add_parser('set_full_name', help="Установить имя")
+    set_full_name_user_sp.add_argument('--username', type=str)
+    set_full_name_user_sp.add_argument('--full_name', type=str, default=None)
+    set_full_name_user_sp.set_defaults(func=set_full_name_user)
+
+    set_email_user_sp = db_user_sps.add_parser('set_email', help="Установить email")
+    set_email_user_sp.add_argument('--username', type=str)
+    set_email_user_sp.add_argument('--email', type=str, default=None)
+    set_email_user_sp.set_defaults(func=set_email_user)
 
 
 def create_parser():

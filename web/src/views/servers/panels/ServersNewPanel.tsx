@@ -148,8 +148,6 @@ export class ServersNewPanel extends React.Component<IPanelProps,
         <Group>
           {this.state.master ? (
             <Div>
-              <span>sudo su -i</span><br />
-              <span>cd /home/lradmin/lrcp</span><br />
               <span>poetry run manage client setup </span>
               <span> --master_ip {this.state.master.ip} </span>
               <span> --master_port {this.state.master.port} </span>
@@ -159,9 +157,7 @@ export class ServersNewPanel extends React.Component<IPanelProps,
               <span>
                 {' '}
                 --token &apos;{localStorage.getItem(STORAGE_KEYS.TOKEN)}&apos;
-              </span><br />
-              <span>pm2 start ecosystem.config.js --only lrcp_client</span>
-              <span>pm2 save</span>
+              </span><br/>
             </Div>
           ) : (
             <Div>

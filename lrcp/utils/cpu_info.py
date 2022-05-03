@@ -1,4 +1,3 @@
-import json
 import time
 import typing
 
@@ -87,7 +86,7 @@ class CPULoadInfo(pydantic.BaseModel):
         return self.total_usage + self.total_idle
 
     def load(self, last: "CPULoadInfo") -> float:
-        return (self.total_usage - last.total_usage) / (self.total - last.total) * 100
+        return (self.total_usage - last.total_usage) / ((self.total - last.total) or 1) * 100
 
 
 class CPUInfo(pydantic.BaseModel):

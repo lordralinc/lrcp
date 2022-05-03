@@ -25,7 +25,7 @@ class Accordion extends React.Component<React.PropsWithChildren<IAccordionProps>
       <div>
         <SimpleCell
           {...this.props.headerProps}
-          onClick={() => this.setState({isOpen: !this.state.isOpen})}
+          onClick={() => this.setState({ isOpen: !this.state.isOpen })}
           after={this.state.isOpen}
         >
           {this.props.header}

@@ -13,9 +13,27 @@ message CreateServerResponse {
   string api_key = 1;
 }
 
+message CollectCollectMemoryRequest {
+  string api_key = 1;
+  GetMemoryInfoResponse info = 2;
+}
+
+message CollectCPUInfoRequest {
+  string api_key = 1;
+  GetCPUInfoResponse info = 2;
+}
+
+message CollectNetInfoRequest {
+  string api_key = 1;
+  GetNetInfoResponse info = 2;
+}
+
 
 service ServerServicer {
   rpc Ping(BaseRequest) returns (BaseResponse) {}
   rpc CreateServer(CreateServerRequest) returns (CreateServerResponse) {}
+  rpc CollectMemoryInfo(CollectCollectMemoryRequest) returns (BaseResponse) {}
+  rpc CollectCPUInfo(CollectCPUInfoRequest) returns (BaseResponse) {}
+  rpc CollectNetInfo(CollectNetInfoRequest) returns (BaseResponse) {}
 }
 

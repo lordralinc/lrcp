@@ -3,11 +3,18 @@ import React from 'react'
 import { RouterParams, withParams } from '@happysanta/router'
 import { Group, Placeholder, Tabs, TabsItem } from '@vkontakte/vkui'
 
-import { GetServerInfoResponse, GetServerMonitorWSResponse, GetServerResponse, ServersApi } from '../../../api'
+import { GetServerInfoResponse, GetServerResponse, ServersApi } from '../../../api'
 import { BasePanel } from '../../../components'
 import { IPanelProps } from '../../../types'
 import { getApiConfig } from '../../../utils'
-import { MonitorTab, OverviewTab, OverviewTabSkeleton, SystemInfoTab, SystemInfoTabSkeleton } from './serversShowTabs'
+import {
+  MonitorTab,
+  OverviewTab,
+  OverviewTabSkeleton,
+  StatisticsTab,
+  SystemInfoTab,
+  SystemInfoTabSkeleton
+} from './serversShowTabs'
 
 interface IServersShowPanelProps extends IPanelProps, RouterParams {
 }
@@ -72,10 +79,10 @@ class ServersShowPanelToHOC extends React.Component<IServersShowPanelProps,
         {this.state.activeTab === 'monitor' && (
           this.state.server
             ? <MonitorTab
-                server={this.state.server!}
-                info={this.props.info}
-                tabActive={this.state.activeTab === 'monitor'}
-              />
+              server={this.state.server!}
+              info={this.props.info}
+              tabActive={this.state.activeTab === 'monitor'}
+            />
             : null
         )
         }
@@ -102,21 +109,17 @@ class ServersShowPanelToHOC extends React.Component<IServersShowPanelProps,
               )
             })}
           </Tabs>
-          {this.state.activeTab === 'overview' ? (
-            this.state.server ? (
-              <OverviewTab info={this.props.info} server={this.state.server!}/>
-            ) : (
-              <OverviewTabSkeleton/>
-            )
-          ) : this.state.server != null ? (
-            this.state.server.online ? (
-              this.renderTabs()
-            ) : (
-              <Placeholder>Сервер оффлайн</Placeholder>
-            )
-          ) : (
-            this.renderTabs()
-          )}
+          {this.state.activeTab === 'statistics' && <StatisticsTab server_id={parseInt(this.props.params.id)}/>}
+          {this.state.activeTab === 'overview'
+            ? this.state.server
+              ? <OverviewTab info={this.props.info} server={this.state.server!}/>
+              : <OverviewTabSkeleton/>
+            : this.state.server != null
+              ? this.state.server.online
+                ? this.renderTabs()
+                : <Placeholder>Сервер оффлайн</Placeholder>
+              : this.renderTabs()
+          }
         </Group>
       </BasePanel>
     )

@@ -1,12 +1,18 @@
 import datetime
+import typing
 
 from pydantic import BaseModel
+
+from lrcp.db import StatisticCPURecollected, StatisticNetworkRecollected, StatisticRAMRecollected
 
 __all__ = (
     'GetServerResponse',
     'GetServerInfoResponse',
     'GetServerMonitorWSResponse',
     'DeleteServerResponse',
+    'ServersGetCpuStatisticsResponse',
+    'ServersGetRAMStatisticsResponse',
+    'ServersGetNetworkStatisticsResponse',
 )
 
 
@@ -33,3 +39,18 @@ class GetServerMonitorWSResponse(BaseModel):
 
 class DeleteServerResponse(BaseModel):
     success: bool
+
+
+class ServersGetCpuStatisticsResponse(BaseModel):
+    date: datetime.datetime
+    info: typing.List[StatisticCPURecollected.RecollectedCPUInfo]
+
+
+class ServersGetRAMStatisticsResponse(BaseModel):
+    date: datetime.datetime
+    info: StatisticRAMRecollected.RecollectedRAMInfo
+
+
+class ServersGetNetworkStatisticsResponse(BaseModel):
+    date: datetime.datetime
+    info: typing.List[StatisticNetworkRecollected.RecollectedNetworkInfo]

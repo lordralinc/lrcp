@@ -3,6 +3,10 @@ import secrets
 
 from tortoise import Model, fields
 
+__all__ = (
+    'Server',
+)
+
 
 class Server(Model):
     id: int = fields.IntField(pk=True)
@@ -18,4 +22,4 @@ class Server(Model):
         return self.name or f"Sever {self.id}"
 
     class Meta:
-        db_table = 'servers'
+        table = 'servers'

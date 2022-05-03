@@ -19,15 +19,15 @@ class ClientServicerStub:
 
     GetMemoryInfo: grpc.UnaryUnaryMultiCallable[
         lrcp.grpc_data.base_pb2.BaseRequest,
-        lrcp.grpc_data.client_pb2.GetMemoryInfoResponse]
+        lrcp.grpc_data.base_pb2.GetMemoryInfoResponse]
 
     GetCPUInfo: grpc.UnaryUnaryMultiCallable[
         lrcp.grpc_data.base_pb2.BaseRequest,
-        lrcp.grpc_data.client_pb2.GetCPUInfoResponse]
+        lrcp.grpc_data.base_pb2.GetCPUInfoResponse]
 
     GetNetInfo: grpc.UnaryUnaryMultiCallable[
         lrcp.grpc_data.base_pb2.BaseRequest,
-        lrcp.grpc_data.client_pb2.GetNetInfoResponse]
+        lrcp.grpc_data.base_pb2.GetNetInfoResponse]
 
 
 class ClientServicerServicer(metaclass=abc.ABCMeta):
@@ -47,19 +47,19 @@ class ClientServicerServicer(metaclass=abc.ABCMeta):
     def GetMemoryInfo(self,
         request: lrcp.grpc_data.base_pb2.BaseRequest,
         context: grpc.ServicerContext,
-    ) -> lrcp.grpc_data.client_pb2.GetMemoryInfoResponse: ...
+    ) -> lrcp.grpc_data.base_pb2.GetMemoryInfoResponse: ...
 
     @abc.abstractmethod
     def GetCPUInfo(self,
         request: lrcp.grpc_data.base_pb2.BaseRequest,
         context: grpc.ServicerContext,
-    ) -> lrcp.grpc_data.client_pb2.GetCPUInfoResponse: ...
+    ) -> lrcp.grpc_data.base_pb2.GetCPUInfoResponse: ...
 
     @abc.abstractmethod
     def GetNetInfo(self,
         request: lrcp.grpc_data.base_pb2.BaseRequest,
         context: grpc.ServicerContext,
-    ) -> lrcp.grpc_data.client_pb2.GetNetInfoResponse: ...
+    ) -> lrcp.grpc_data.base_pb2.GetNetInfoResponse: ...
 
 
 def add_ClientServicerServicer_to_server(servicer: ClientServicerServicer, server: grpc.Server) -> None: ...

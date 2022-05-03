@@ -8,9 +8,147 @@ message BaseRequest {
 message BaseResponse{
   enum ErrorCodes {
     NEED_CPU_INFO                = 0;
+    UNAUTHORIZED                 = 1;
   }
 
   bool success                   = 1;
   ErrorCodes error_code          = 2;
   string error_message           = 3;
+}
+
+message GetMemoryInfoResponse {
+  uint64 mem_total = 1;
+  uint64 mem_free = 2;
+  uint64 mem_available = 3;
+  uint64 buffers = 4;
+  uint64 cached = 5;
+  uint64 swap_cached = 6;
+  uint64 active = 7;
+  uint64 inactive = 8;
+  uint64 active_anon = 9;
+  uint64 inactive_anon = 10;
+  uint64 active_file = 11;
+  uint64 inactive_file = 12;
+  uint64 unevictable = 13;
+  uint64 mlocked = 14;
+  uint64 swap_total = 15;
+  uint64 swap_free = 16;
+  uint64 dirty = 17;
+  uint64 writeback = 18;
+  uint64 anon_pages = 19;
+  uint64 mapped = 20;
+  uint64 shmem = 21;
+  uint64 kreclaimable = 22;
+  uint64 slab = 23;
+  uint64 sreclaimable = 24;
+  uint64 sunreclaim = 25;
+  uint64 kernel_stack = 26;
+  uint64 page_tables = 27;
+  uint64 nfs_unstable = 28;
+  uint64 bounce = 29;
+  uint64 writeback_tmp = 30;
+  uint64 commit_limit = 31;
+  uint64 committed_as = 32;
+  uint64 vmalloc_total = 33;
+  uint64 vmalloc_used = 34;
+  uint64 vmalloc_chunk = 35;
+  uint64 percpu = 36;
+  uint64 hardware_corrupted = 37;
+  uint64 anon_huge_pages = 38;
+  uint64 shmem_huge_pages = 39;
+  uint64 shmem_pmd_mapped = 40;
+  uint64 file_huge_pages = 41;
+  uint64 file_pmd_mapped = 42;
+  uint64 huge_pages_total = 43;
+  uint64 huge_pages_free = 44;
+  uint64 huge_pages_rsvd = 45;
+  uint64 huge_pages_surp = 46;
+  uint64 hugepagesize = 47;
+  uint64 hugetlb = 48;
+  uint64 direct_map_4k = 49;
+  uint64 direct_map_2m = 50;
+  uint64 direct_map_1g = 51;
+
+}
+
+message GetCPUInfoResponse {
+  message CPUCore {
+    uint32 processor = 1;
+    string vendor_id = 2;
+    uint32 cpu_family = 3;
+    uint32 model = 4;
+    string model_name = 5;
+    uint32 stepping = 6;
+    string microcode = 7;
+    string cpu_mhz = 8;
+    uint32 cache_size = 9;
+    uint32 physical_id = 10;
+    uint32 siblings = 11;
+    uint32 core_id = 12;
+    uint32 cpu_cores = 13;
+    uint32 apicid = 14;
+    uint32 initial_apicid = 15;
+    bool fpu = 16;
+    bool fpu_exception = 17;
+    uint32 cpuid_level = 18;
+    bool wp = 19;
+    repeated string flags = 20;
+    repeated string bugs = 21;
+    float bogomips = 22;
+    string tlb_size = 23;
+    uint32 clflush_size = 24;
+    uint32 cache_alignment = 25;
+    repeated string address_sizes = 26;
+    repeated string power_management = 27;
+  }
+  message CPULoadInfo {
+    uint64 user = 1;
+    uint64 nice = 2;
+    uint64 system = 3;
+    uint64 idle = 4;
+    uint64 iowait = 5;
+    uint64 irq = 6;
+    uint64 soft_irq = 7;
+    uint64 steal = 8;
+    uint64 guest = 9;
+    uint64 guest_nice = 10;
+  }
+
+  float load_avg_1 = 1;
+  float load_avg_5 = 2;
+  float load_avg_15 = 3;
+  uint32 process_current = 4;
+  uint32 process_all = 5;
+  uint32 last_pid = 6;
+  repeated CPUCore cores = 7;
+  repeated CPULoadInfo load = 8;
+  CPULoadInfo all_load = 9;
+}
+message GetNetInfoResponse {
+  message EthInterface {
+    message Receive {
+      uint64 bytes = 1;
+      uint64 packets = 2;
+      uint64 errors = 3;
+      uint64 drop = 4;
+      uint64 fifo = 5;
+      uint64 frame = 6;
+      uint64 compressed = 7;
+      uint64 multicast = 8;
+    }
+    message Transmit {
+      uint64 bytes = 1;
+      uint64 packets = 2;
+      uint64 errors = 3;
+      uint64 drop = 4;
+      uint64 fifo = 5;
+      uint64 colls = 6;
+      uint64 carrier = 7;
+      uint64 compressed = 8;
+    }
+    string name = 1;
+    Receive receive = 2;
+    Transmit transmit = 3;
+  }
+  repeated EthInterface interfaces = 1;
 }

@@ -1,5 +1,9 @@
 from tortoise import Model, fields
 
+__all__ = (
+    'User',
+)
+
 
 class User(Model):
     username: str = fields.CharField(max_length=128, pk=True)
@@ -10,4 +14,4 @@ class User(Model):
     is_active: bool = fields.BooleanField(default=False)
 
     class Meta:
-        db_table = 'users'
+        table = 'users'

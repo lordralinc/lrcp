@@ -1,20 +1,20 @@
-import io, { Manager, Socket } from 'socket.io-client'
+import { Manager, Socket } from 'socket.io-client'
 
 import { BASE_PATH } from '../api/base'
 import { EventTypeEnum, InfoCPU, InfoMemory, InfoNet } from './types'
 
 export class ServerSocket {
   public readonly url: string
-  private readonly accessToken: string
   public manager: Manager
   public socket: Socket
+  private readonly accessToken: string
 
   constructor(accessToken: string) {
     this.url = BASE_PATH
     this.accessToken = accessToken
-    this.manager = new Manager(this.url, {path: '/ws/socket.io'})
+    this.manager = new Manager(this.url, { path: '/ws/socket.io' })
     this.socket = this.manager.socket('/', {
-      auth: {token: this.accessToken, }
+      auth: { token: this.accessToken }
     })
   }
 

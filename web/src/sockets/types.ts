@@ -1,11 +1,9 @@
-
-
 export const EventTypeEnum = {
   InfoMemory: 'info.memory',
   InfoCPU: 'info.cpu',
   InfoNet: 'info.net',
   ErrorServerOffline: 'error.server_offline'
-} as const;
+} as const
 
 export interface InfoMemory {
   mem_total?: number
@@ -90,6 +88,7 @@ export interface CPUCore {
   address_sizes: string[]
   power_management: string[]
 }
+
 export interface CPULoadInfo {
   user: number
   nice: number
@@ -116,30 +115,30 @@ export interface InfoCPU {
 }
 
 export interface Receive {
-    bytes: number
-    packets: number
-    errors: number
-    drop: number
-    fifo: number
-    frame: number
-    compressed: number
-    multicast: number
+  bytes: number
+  packets: number
+  errors: number
+  drop: number
+  fifo: number
+  frame: number
+  compressed: number
+  multicast: number
 }
 
 export interface Transmit {
-    bytes: number
-    packets: number
-    errors: number
-    drop: number
-    fifo: number
-    colls: number
-    carrier: number
-    compressed: number
+  bytes: number
+  packets: number
+  errors: number
+  drop: number
+  fifo: number
+  colls: number
+  carrier: number
+  compressed: number
 }
 
 export interface EthInterface {
   name: string
-  receive :Receive;
+  receive: Receive;
   transmit: Transmit;
 }
 
