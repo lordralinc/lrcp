@@ -134,10 +134,10 @@ html_static_path = ['_static']
 # html_use_index = True
 
 # Split the index into individual pages for each letter.
-html_split_index = True
+html_split_index = False
 
 # If true, "Created using Sphinx" is shown in the HTML footer. Default is True.
-html_show_sphinx = False
+html_show_sphinx = True
 
 # Language to be used for generating the HTML full-text search index.
 # Sphinx supports the following languages:
