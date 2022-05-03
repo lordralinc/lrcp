@@ -1,0 +1,14 @@
+[Unit]
+Description=Master for LRCP
+Documentation=http://lrcp.readthedocs.io/
+After=network.target
+
+[Service]
+User=root
+Group=www-data
+WorkingDirectory=${cwd}
+ExecStart=poetry run manage server run
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

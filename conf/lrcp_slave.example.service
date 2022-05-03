@@ -1,0 +1,14 @@
+[Unit]
+Description=Slave for LRCP
+Documentation=http://lrcp.readthedocs.io/
+After=network.target
+
+[Service]
+User=root
+Group=www-data
+WorkingDirectory=${cwd}
+ExecStart=poetry run manage client run
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

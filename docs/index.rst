@@ -13,3 +13,4 @@ LR Control Panel
    structure
    work_scheme
    setup
+   cli
